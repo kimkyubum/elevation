@@ -8,9 +8,17 @@
 <body>
 
 <div>HIHI</div>
-<script src="https://apis.daum.net/maps/maps3.js?apikey=3a71cb1d39404e9bea87c4897f5cb29c&autoload=true"></script>
 <script>
 
+            var googleMapTag = $window.document.createElement('script'),
+                scriptTag = $window.document.getElementsByTagName('script')[0];
+
+            googleMapTag.type = 'text/javascript';
+            googleMapTag.async = false;
+            googleMapTag.src = 'https://apis.daum.net/maps/maps3.js?apikey=3a71cb1d39404e9bea87c4897f5cb29c&autoload=false';
+
+            scriptTag.parentNode.insertBefore(googleMapTag, scriptTag);
+    
             var gpsLogList = [],
                 golfclubSeq = null,
                 step = 0;
