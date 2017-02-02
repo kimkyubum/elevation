@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div>HIHI</div>
+<div id="map" style="position: fixed; top: 0;left:0; width:1024px; height:800px;"></div>
 <script src='https://apis.daum.net/maps/maps3.js?apikey=3a71cb1d39404e9bea87c4897f5cb29c&autoload=false'></script>
 <script>
     
@@ -36,7 +36,7 @@
 
     setTimeout(function(){
         daum.maps.load(function() {
-            alert('map loaded');
+            mapInit();
             //debugInit();
         });
      }, 3000);
