@@ -8,66 +8,58 @@
 <body>
 
 <div>HIHI</div>
+<script src='https://apis.daum.net/maps/maps3.js?apikey=3a71cb1d39404e9bea87c4897f5cb29c&autoload=false'></script>
 <script>
-
-            var googleMapTag = window.document.createElement('script'),
-                scriptTag = window.document.getElementsByTagName('script')[0];
-
-            googleMapTag.type = 'text/javascript';
-            googleMapTag.async = false;
-            googleMapTag.src = 'https://apis.daum.net/maps/maps3.js?apikey=3a71cb1d39404e9bea87c4897f5cb29c&autoload=false';
-
-            scriptTag.parentNode.insertBefore(googleMapTag, scriptTag);
     
-            var gpsLogList = [],
-                golfclubSeq = null,
-                step = 0;
+    var gpsLogList = [],
+        golfclubSeq = null,
+        step = 0;
 
-            function debugInit() {
-                userSetting.init();
-                dbManager.init().then(function() {
-                    if (!golfclubSeq) {
-                        golfclubSeq = 10724; //군산CC
-                        //golfclubSeq = 10505; //안성Q
-                    }
-                    yardage.initialize(golfclubSeq).then(function() {
-                        navigation.init().then(function() {
-                        });
-                        mapInit();
-                    });
-                });
+    function debugInit() {
+        userSetting.init();
+        dbManager.init().then(function() {
+            if (!golfclubSeq) {
+                golfclubSeq = 10724; //군산CC
+                //golfclubSeq = 10505; //안성Q
             }
-
-
-            var map,
-                marker;
-    
-            setTimeout(function(){
-                daum.maps.load(function() {
-                    alert('map loaded');
-                    //debugInit();
+            yardage.initialize(golfclubSeq).then(function() {
+                navigation.init().then(function() {
                 });
-             }, 3000);
-    
+                mapInit();
+            });
+        });
+    }
 
 
-            function mapInit() {
-                var container = document.getElementById('map'),
-                    options = { //지도를 생성할 때 필요한 기본 옵션
-                        center: new daum.maps.LatLng(35.89463108012687, 126.65533072177357), //군산 CC
-                        //center: new daum.maps.LatLng(37.045948, 127.388694), //안성 Q.
-                        level: 3 //지도의 레벨(확대, 축소 정도)
-                    };
+    var map,
+        marker;
+
+    setTimeout(function(){
+        daum.maps.load(function() {
+            alert('map loaded');
+            //debugInit();
+        });
+     }, 3000);
 
 
-                map = new daum.maps.Map(container, options);
-                var mapTypeCntrl = new daum.maps.MapTypeControl();
-                map.addControl(mapTypeCntrl, daum.maps.ControlPosition.TOPRIGHT);
-                marker = new daum.maps.Marker({
-                    // 지도 중심좌표에 마커를 생성합니다.
-                    position: map.getCenter()
-                });
-                marker.setMap(map);
+
+    function mapInit() {
+        var container = document.getElementById('map'),
+            options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new daum.maps.LatLng(35.89463108012687, 126.65533072177357), //군산 CC
+                //center: new daum.maps.LatLng(37.045948, 127.388694), //안성 Q.
+                level: 3 //지도의 레벨(확대, 축소 정도)
+            };
+
+
+        map = new daum.maps.Map(container, options);
+        var mapTypeCntrl = new daum.maps.MapTypeControl();
+        map.addControl(mapTypeCntrl, daum.maps.ControlPosition.TOPRIGHT);
+        marker = new daum.maps.Marker({
+            // 지도 중심좌표에 마커를 생성합니다.
+            position: map.getCenter()
+        });
+        marker.setMap(map);
 
                 // Elevation
                 //$http.get('./js/zdata/ansung-q-elevation.json').then(function(rs) {
