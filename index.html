@@ -33,10 +33,15 @@
 
             var map,
                 marker;
+    
+            setTimeout(function(){
+                daum.maps.load(function() {
+                    alert('map loaded');
+                    //debugInit();
+                });
+             }, 3000);
+    
 
-            daum.maps.load(function() {
-                debugInit();
-            });
 
             function mapInit() {
                 var container = document.getElementById('map'),
