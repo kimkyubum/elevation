@@ -40,10 +40,7 @@ function initMap() {
           map.setCenter(pos);
           
           var marker = new google.maps.Marker({
-              position: {
-                lat: lat,
-                lng: lon
-              },
+              position: pos,
               map: map
             });          
       });
