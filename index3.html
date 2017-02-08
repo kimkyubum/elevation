@@ -180,9 +180,9 @@ function attachSecretMessage(map, circle, content) {
 	      navigator.geolocation.getCurrentPosition(function(position) {
 	          var pos = {lat: position.coords.latitude,
 	        	        lng: position.coords.longitude};
-	          map.setCenter({'lat':37.044657, 'lng':127.385317});
+	          map.setCenter(pos);
 	          var marker = new google.maps.Marker({
-	              position: {'lat':37.044657, 'lng':127.385317},
+	              position: pos,
 	              map: map
 	            });
 	          markers.push(marker); 
