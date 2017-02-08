@@ -74,10 +74,10 @@ function initMap() {
       navigator.geolocation.getCurrentPosition(function(position) {
           var pos = {lat: position.coords.latitude,
         	        lng: position.coords.longitude};
-          map.setCenter(pos);
+          map.setCenter(centerPosition);
           
           var marker = new google.maps.Marker({
-              position: pos,
+              position: centerPosition,
               map: map
             });          
       });
