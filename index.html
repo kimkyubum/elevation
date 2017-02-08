@@ -59,7 +59,7 @@ function initMap() {
 
   var infoWindow = new google.maps.InfoWindow({
       maxWidth: 500  });	
-  var path_split = path_list.split('|');
+  var path_split = path_list.value.split('|');
 
   var centerPosition = {'lat':parseFloat(path_split[0].split(',')[0]), 'lng':parseFloat(path_split[0].split(',')[1])};
 
